@@ -12,6 +12,14 @@
             border:solid 1px #000;
         }
 
+        .log table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .log table th, .log table td {
+            border:solid 1px #000;
+        }
+
     </style>
 </head>
 <body>
@@ -98,10 +106,35 @@
 
         <div>
             <a href="list.do"> 목록 </a>
-
         </div>
 
+    </div>
 
+    <div class="log">
+        <table>
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>
+                        로그인 일자
+                    </th>
+                    <th>
+                        접속IP
+                    </th>
+                    <th>
+                        접속 UserAgent
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="x, i: ${list}">
+                    <td th:text="${i.index+1}">1</td>
+                    <td th:text="${x.loginDtText}">2021.09.21</td>
+                    <td th:text="${x.clientIp}">1.0.0.0</td>
+                    <td th:text="${x.userAgent}">mOZEASD</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 

@@ -56,7 +56,6 @@ public class TakeCourseDto {
     public String getRegDtText() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
         return regDt != null ? regDt.format(formatter) : "";
-    
     }
     
 }

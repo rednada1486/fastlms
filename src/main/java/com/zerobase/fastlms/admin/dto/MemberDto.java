@@ -39,6 +39,8 @@ public class MemberDto {
     //추가컬럼
     long totalCount;
     long seq;
+
+    LocalDateTime loginDt;
     
     
     public static MemberDto of(Member member) {
@@ -57,11 +59,10 @@ public class MemberDto {
                 .resetPasswordLimitDt(member.getResetPasswordLimitDt())
                 .adminYn(member.isAdminYn())
                 .userStatus(member.getUserStatus())
-                
                 .zipcode(member.getZipcode())
                 .addr(member.getAddr())
                 .addrDetail(member.getAddrDetail())
-                
+
                 .build();
     }
     
@@ -75,6 +76,12 @@ public class MemberDto {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return udtDt != null ? udtDt.format(formatter) : "";
         
+    }
+
+    public String getLoginDtText() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+        return loginDt != null ? loginDt.format(formatter) : "";
+
     }
     
 }

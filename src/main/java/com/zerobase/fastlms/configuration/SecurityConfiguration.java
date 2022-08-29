@@ -21,6 +21,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final MemberService memberService;
 
+
+
     @Bean
     PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -33,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/favicon.ico", "/files/**");
+        web.ignoring().antMatchers("/favicon.ico", "/files/**", "/error");
         
         super.configure(web);
     }
@@ -59,6 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 .loginPage("/member/login")
+                .defaultSuccessUrl("/member/log")
                 .failureHandler(getFailureHandler())
                 .permitAll();
 

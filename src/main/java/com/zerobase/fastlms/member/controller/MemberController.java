@@ -9,17 +9,22 @@ import com.zerobase.fastlms.member.model.MemberInput;
 import com.zerobase.fastlms.member.model.ResetPasswordInput;
 import com.zerobase.fastlms.member.service.MemberService;
 import com.zerobase.fastlms.util.PasswordUtils;
+import com.zerobase.fastlms.util.RequestUtils;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.RequestUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 public class MemberController {
@@ -172,4 +177,22 @@ public class MemberController {
         
         return "redirect:/member/logout";
     }
+
+    @GetMapping("/member/log")
+    public String writeLog(HttpServletRequest request, Principal principal){
+
+        String userId = principal.getName();
+        log.info(userId);
+        String userAgent = RequestUtils.getUserAgent(request);
+        String clientIp = RequestUtils.getClientIP(request);
+
+        boolean result = memberService.writeLog(userId, userAgent,clientIp);
+
+
+
+
+        return "redirect:/";
+    }
+
+
 }
