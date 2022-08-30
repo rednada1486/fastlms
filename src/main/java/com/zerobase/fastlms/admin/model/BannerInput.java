@@ -1,4 +1,4 @@
-package com.zerobase.fastlms.course.model;
+package com.zerobase.fastlms.admin.model;
 
 import lombok.Data;
 
@@ -10,9 +10,13 @@ public class BannerInput {
     String linkAddress;
     String openMethod;
 
+    String alterText;
+
     //ADD
     String filename;
     String urlFilename;
+
+    String idList;
 
     int order;
 

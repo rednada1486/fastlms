@@ -4,13 +4,11 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: minicampus_user
     password: a1234
-  
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: update
     show-sql: true
-    
   mail:
     host: smtp.gmail.com
     port: 587
@@ -21,14 +19,18 @@ spring:
         smtp:
           starttls:
             enable: true
-            
 logging:
   level:
     root: info
-    
+
+
 mybatis:
+  #  mapper 위치 설정
   mapper-locations: mybatis/**/*.xml
   configuration:
+    #    underscore를 camelcase로 바꿔주는 설정 예) email_address -> emailAddress
     map-underscore-to-camel-case: true
+    #    로그 관련 설정
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 

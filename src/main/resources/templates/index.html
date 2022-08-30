@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>메인 페이지</title>
+
 </head>
 <body>
     <h1>메인 페이지 </h1>
@@ -15,17 +16,22 @@
     <!-- 아래 부분의 배너이미지가 관리자에서 등록된 데이터로 교체되면 됩니다. -->
     <div class="home__slider">
         <div class="bxslider">
-<!--            <div th:each="x : ${banners}">-->
-<!--                <a th:href="${x.linkUrl}" th:target="${x.target}"><img th:src="${x.urlFilename}"></a>-->
-<!--            </div>-->
-            <!--
-            <div>
-                <a href="#"><img src="https://bxslider.com/assets/images/plant.jpg"></a>
+            <div th:each="x : ${banners}">
+                <a th:href="${x.linkAddress}" th:target="${x.openMethod}"><img th:src="${x.urlFilename}" th:alt="${x.alterText}"></a>
             </div>
-            -->
         </div>
     </div>
-    <div> <img src="/files/abc.png"></div>
+
+    <script>
+        $(function(){
+            $('.bxslider').bxSlider({
+                mode: 'fade',
+                captions: true,
+                slideWidth: 800
+            });
+        });
+    </script>
+
 
 </body>
 </html>

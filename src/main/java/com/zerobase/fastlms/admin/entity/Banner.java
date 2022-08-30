@@ -1,4 +1,4 @@
-package com.zerobase.fastlms.course.entity;
+package com.zerobase.fastlms.admin.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,16 +20,14 @@ public class Banner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
     String bannerName;
     String linkAddress;
+    String alterText;
     String openMethod;
-
-    //ADD
     String filename;
     String urlFilename;
-
-    int order;
-
+    int orderValue;
     boolean open;
+
+    LocalDateTime regDt;
 }

@@ -128,20 +128,23 @@
         </tr>
         </thead>
         <tbody id="dataLIst">
-        <tr th:each="x : ${list}">
-            <td>
-                <input type="checkbox" th:value="${x.id}" />
-            </td>
-            <td th:text="${x.seq}">1</td>
-            <td>
-                <p>
-                    <a th:href="'edit.do?id=' + ${x.id}" th:text="${x.subject}">강좌명</a>
-                </p>
-            </td>
-            <td>
-                <p th:text="${x.regDt}">2021.01.01</p>
-            </td>
-        </tr>
+            <tr th:each="x : ${list}">
+                <td>
+                    <input type="checkbox" th:value="${x.id}" />
+                </td>
+                <td th:text="${x.orderValue}">1</td>
+                <td>
+                    <p>
+                        <a th:href="'edit.do?id=' + ${x.id}" th:text="${x.bannerName}">배너명</a>
+                    </p>
+                </td>
+                <td>
+                    <img th:src="${x.urlFilename}"></img>
+                </td>
+                <td>
+                    <p th:text="${x.regDtText}">2021.01.01</p>
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -153,7 +156,7 @@
 
 </div>
 
-<form name="deleteForm" method="post" action="/admin/course/delete.do">
+<form name="deleteForm" method="post" action="/admin/banner/delete.do">
     <input type="hidden" name="idList"/>
 </form>
 
