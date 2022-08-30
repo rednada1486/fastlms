@@ -18,6 +18,7 @@
         <div class="bxslider">
             <div th:each="x : ${banners}">
                 <a th:href="${x.linkAddress}" th:target="${x.openMethod}"><img th:src="${x.urlFilename}" th:alt="${x.alterText}"></a>
+
             </div>
         </div>
     </div>
@@ -27,7 +28,8 @@
             $('.bxslider').bxSlider({
                 mode: 'fade',
                 captions: true,
-                slideWidth: 800
+                slideWidth: 800,
+                touchEnabled : (navigator.maxTouchPoints > 0)
             });
         });
     </script>
